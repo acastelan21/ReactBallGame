@@ -2,10 +2,17 @@
   "name": "reactballgame",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "install": "cd client && yarn install",
+    "build": "cd client && yarn run build",
+    "heroku-postbuild": "yarn run build"
+  },
   "repository": "git@github.com:acastelan21/ReactBallGame.git",
   "author": "AlCast <alvaro.castelan.21@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3"
   }
 }
