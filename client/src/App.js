@@ -8,7 +8,7 @@ import Games from "./pages/games";
 import Leaderboard from "./pages/leaderboard";
 import Auth from "./auth/Auth.js";
 import Callback from "./pages/callback";
-
+import axios from "axios";
 const auth =new Auth();
 
 const handleAuthentication = (nextState, replace) => {
@@ -18,7 +18,11 @@ const handleAuthentication = (nextState, replace) => {
 }
 class App extends Component {
 
-
+getGetRequest(){
+  axios.get("/api/test").then(res => {
+    console.log("get test"); 
+  })
+}
 
 
   render() {
@@ -26,6 +30,8 @@ class App extends Component {
     return (
       <Router history={history}>
         <div>
+          <div><button onClick={this.getGetRequest}>
+            GET TEST</button></div>
           <div>
             {
               isAuthenticated() ? 
@@ -40,8 +46,8 @@ class App extends Component {
                 </div> ) 
             }
           </div>
+          
         {/* Routing for pages */}
-       
         <Route path="/login" render={(props) => <LogIn auth={auth} {...props} />} />
         <Route path="/members" render={(props) => <Members auth={auth} {...props} />} />
         <Route exact path="/games" render={(props) => <Games auth={auth} {...props} />} />

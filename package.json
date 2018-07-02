@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:acastelan21/ReactBallGame.git",
   "author": "AlCast <alvaro.castelan.21@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
