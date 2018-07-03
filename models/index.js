@@ -1,0 +1,1 @@
+module.exports ={dbData: require("./dbData")};
