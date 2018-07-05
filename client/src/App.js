@@ -9,8 +9,8 @@ import Leaderboard from "./pages/leaderboard";
 import Auth from "./auth/Auth.js";
 import Callback from "./pages/callback";
 import axios from "axios";
-import Wrapper from "./components/Wrapper"
-
+import Wrapper from "./components/Wrapper";
+import Footer from "./components/Footer";
 
 const auth =new Auth();
 
@@ -63,6 +63,7 @@ getGetRequest(){
             
           </div>
         </Router>
+      <Footer/>
       </Wrapper>
     );
   }
