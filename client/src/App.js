@@ -30,26 +30,14 @@ getGetRequest(){
 
 
   render() {
-    const { isAuthenticated } = auth; 
+    
     return (
       <Wrapper>
         <Router history={history}>
           <div>
             <div><button onClick={this.getGetRequest}>
               GET TEST</button></div>
-            <div>
-              {
-                isAuthenticated() ? 
-                (
-                  <div>
-                    Logged In <button onClick={() => auth.logout()}>Log Out</button>
-                  </div> 
-                ) :
-                ( <div>
-                    Logged Out <button onClick={() => auth.login()}>Log In</button>
-                  </div> ) 
-              }
-            </div>
+            
 
           {/* Routing for pages */}
           <Route exact path="/" render={(props) => <LogIn auth={auth} {...props} />} />

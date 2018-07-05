@@ -1,14 +1,15 @@
 import React, {Component} from "react"; 
 import NavBar from "../../components/NavBar";
 import "./login.css";
+import Auth from "../../auth/Auth";
 
-
+const auth =new Auth();
 
 
 class LogIn extends Component{
     
     render(){
-        
+        const { isAuthenticated } = auth; 
         return(
             <div className="logInComp">
                 <NavBar/>
@@ -19,9 +20,20 @@ class LogIn extends Component{
                                 <h1 className="display-4">Welcome to Ball Game!</h1>
                                 <p className="lead">This is website where you can make bets on certain outcomes of MLB games. Games are locked 5 minutes before scheduled start time. </p>
                                 <hr className="my-4"/>
-                                <a className="btn btn-primary btn-lg" href="/games" role="button">Today's Games</a>
-                                <a className="btn btn-primary btn-lg" href="/leaderboard" role="button">Leaderboard</a>
-                            </div>
+                                <div>
+                                {
+                                isAuthenticated() ? 
+                                (
+                                <div>
+                                Logged In <button className="btn btn-primary btn-lg" onClick={() => auth.logout()}>Log Out</button>
+                                </div> 
+                                ) :
+                                ( <div>
+                                Logged Out <button className="btn btn-primary btn-lg" onClick={() => auth.login()}>Log In</button>
+                                </div> ) 
+                                }
+                                </div>
+                                </div>
                         </div>
                     </div>
 
@@ -33,3 +45,6 @@ class LogIn extends Component{
     }
 }
 export default LogIn;
+
+
+
