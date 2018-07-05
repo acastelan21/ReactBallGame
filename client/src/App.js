@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import history from "./history";
 import './App.css';
 import {Router, Route} from "react-router-dom"; 
-import LogIn from "./pages/login";
-import Members from "./pages/members";
-import Games from "./pages/games"; 
-import Leaderboard from "./pages/leaderboard";
+import LogIn from "./pages/Login/";
+import Members from "./pages/Members";
+import Games from "./pages/Games"; 
+import Leaderboard from "./pages/Leaderboard";
 import Auth from "./auth/Auth.js";
-import Callback from "./pages/callback";
+import Callback from "./pages/CallBack";
 import axios from "axios";
 import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
@@ -52,7 +52,7 @@ getGetRequest(){
             </div>
 
           {/* Routing for pages */}
-          <Route path="/login" render={(props) => <LogIn auth={auth} {...props} />} />
+          <Route exact path="/" render={(props) => <LogIn auth={auth} {...props} />} />
           <Route path="/members" render={(props) => <Members auth={auth} {...props} />} />
           <Route exact path="/games" render={(props) => <Games auth={auth} {...props} />} />
           <Route path="/leaderboard" render={(props) => <Leaderboard auth={auth} {...props} />} />
