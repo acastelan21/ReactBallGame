@@ -1,5 +1,5 @@
 import React, {Component} from "react"; 
-
+import NavBar from "../components/NavBar";
 
 
 
@@ -11,7 +11,8 @@ class LogIn extends Component{
         
         return(
             <div className="logInComp">
-            <div>Login Page</div>
+                <NavBar/>
+                <div>Login Page</div>
             </div>
         )
     }
