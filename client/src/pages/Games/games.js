@@ -1,26 +1,57 @@
 import React, {Component} from "react"; 
 import NavBar from "../../components/NavBar";
 import API from "../../utils/API";
-
+import GameButton from "../../components/GamesButton";
 
 
 
 
 class Games extends Component{
+    state ={
+        games:[],
+        isThereGames: false
+    };
+
     handleSearchGames = (event)=>{
         event.preventDefault();
         API.searchForGames()
-        .then((res)=>
-        console.log(res))
+        .then((response)=>{
+            this.setState({isThereGames:true});
+            console.log("Are there games left today?: " + this.state.isThereGames)
+            this.setState({
+            games:response.data.games
+            });
+            console.log(this.state.games);
+        });//.then(response)
+    }//handle search games
+    handleGameClick =(event)=>{
+        event.preventDefault();
+        window.location.href="http://localhost:3000/bets/";
     }
+
+
     render(){
         return(
+            
             <div className="gamesComp">
-            <NavBar/>
-            <div>Games Today</div>
-            <button onClick={this.handleSearchGames}type="submit" className="btn btn-primary">
+                <NavBar/>
+                <div>Games Today</div>
+                <button onClick={this.handleSearchGames} type="submit" className="btn btn-primary">
                 Get Games
-            </button>
+                </button>
+                <div className="row">
+                {this.state.games.map(games =>(
+
+                    <GameButton
+                    _id={games.id}
+                    key={games.id}
+                    awayTeam={games.away.name}
+                    homeTeam={games.home.name}
+                    handleGameClick={this.handleGameClick}
+                    />
+                ))}
+                </div>
+            
 
 
             </div>

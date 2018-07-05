@@ -11,7 +11,7 @@ import Callback from "./pages/CallBack";
 import axios from "axios";
 import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
-
+import Bets from "./pages/Bets";
 const auth =new Auth();
 
 const handleAuthentication = (nextState, replace) => {
@@ -44,6 +44,7 @@ getGetRequest(){
           <Route path="/members" render={(props) => <Members auth={auth} {...props} />} />
           <Route exact path="/games" render={(props) => <Games auth={auth} {...props} />} />
           <Route path="/leaderboard" render={(props) => <Leaderboard auth={auth} {...props} />} />
+          <Route path="/bets" render={(props) => <Bets auth={auth}{...props}/>}/>
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 
