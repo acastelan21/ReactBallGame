@@ -7,7 +7,7 @@ class Standings extends Component{
     super();
 this.state ={
     standingsNLWest:[],
-    standingsNLCentral:[{}],
+    standingsNLCentral:[],
     standingsNLEast:[],
     standingsALEast:[],
     standingsALCentral:[],
@@ -17,7 +17,7 @@ this.state ={
 }
 handleSearchStandings =(event)=>{
     event.preventDefault();
-    API.SearchForStandings()
+    API.searchForStandings()
     .then((response)=>{
         console.log("=====================================");
         console.log(response.data);
@@ -71,6 +71,7 @@ render(){
               
                 ))}
                 </div>
+               
                 <div className="divisionName">East
                 {this.state.standingsNLEast.map((standingsNLEast,i) =>(
                 <div key={i}>

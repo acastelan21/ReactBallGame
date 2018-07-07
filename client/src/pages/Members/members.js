@@ -1,7 +1,7 @@
 import React, {Component} from "react"; 
 import NavBar from "../../components/NavBar";
 import Standings from "../../components/Standings";
-
+import News from "../../components/News";
 class Members extends Component{
   
     render(){
@@ -14,11 +14,13 @@ class Members extends Component{
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-5">
                     <Standings/>
                     </div>
-                    <div className="col-3">News</div>
-                    <div className="col-3">Roster</div>
+                    <div className="col-7">
+                    <News/>
+                    </div>
+                    {/* <div className="col-3">Roster</div> */}
                     
                 </div>
             </div>
