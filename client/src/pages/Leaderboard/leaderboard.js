@@ -5,8 +5,35 @@ class Leaderboard extends Component{
         return(
             <div className="leaderboardComp">
             <NavBar/>
-            <div>LeaderboardPage</div>
-            </div>
+            <div className="container" id="overallContain">
+
+  <table className="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">User</th>
+        <th scope="col">Percent Correct(%)</th>
+      </tr>
+    </thead>
+    
+
+     <tbody>
+      
+      <tr>
+        <th scope="row"></th>
+        <td>username</td>
+        <td>score</td>
+      </tr>
+      
+
+    
+    </tbody>
+    
+  </table>
+
+
+</div>
+</div>
         )
     }
 }

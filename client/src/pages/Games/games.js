@@ -11,6 +11,7 @@ class Games extends Component{
         games:[],
         isThereGames: false
     };
+    
 
     handleSearchGames = (event)=>{
         event.preventDefault();
@@ -24,7 +25,7 @@ class Games extends Component{
             console.log(this.state.games);
         });//.then(response)
     }//handle search games
-    handleGameClick =(event)=>{
+    handleGameClick = (event) =>{
         event.preventDefault();
         window.location.href="http://localhost:3000/bets/";
     }

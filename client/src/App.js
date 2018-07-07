@@ -35,8 +35,7 @@ getGetRequest(){
       <Wrapper>
         <Router history={history}>
           <div>
-            <div><button onClick={this.getGetRequest}>
-              GET TEST</button></div>
+            
             
 
           {/* Routing for pages */}
