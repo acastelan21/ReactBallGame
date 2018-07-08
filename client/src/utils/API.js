@@ -35,7 +35,17 @@ const API ={
 
     },
 
+    searchForRoster:()=>{
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const favoriteTeamId = "aa34e0ed-f342-4ec6-b774-c79b47b60e2d";//Twins Minnesota
+        const baseballApi = "xksqy5yzud2g255rumfjf5ga";
 
+//------- roster api
+        const rosterUrl = `http://api.sportradar.us/mlb/trial/v6.5/en/teams/${favoriteTeamId}/profile.json?api_key=${baseballApi}`;
+
+
+        return axios.get(proxyUrl+rosterUrl);
+    }
 
 
 };

@@ -51,7 +51,7 @@ getGetRequest(){
             
           </div>
         </Router>
-      <Footer/>
+        <Footer/>
       </Wrapper>
     );
   }

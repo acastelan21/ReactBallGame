@@ -5,15 +5,15 @@ class Standings extends Component{
 
     constructor(){
     super();
-this.state ={
-    standingsNLWest:[],
-    standingsNLCentral:[],
-    standingsNLEast:[],
-    standingsALEast:[],
-    standingsALCentral:[],
-    standingsALWest:[], 
+    this.state ={
+        standingsNLWest:[],
+        standingsNLCentral:[],
+        standingsNLEast:[],
+        standingsALEast:[],
+        standingsALCentral:[],
+        standingsALWest:[], 
 
-}
+    }
 }
 handleSearchStandings =(event)=>{
     event.preventDefault();

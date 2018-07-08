@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import NavBar from "../../components/NavBar";
 import Standings from "../../components/Standings";
 import News from "../../components/News";
+import Roster from "../../components/Roster";
 class Members extends Component{
   
     render(){
@@ -19,6 +20,7 @@ class Members extends Component{
                     </div>
                     <div className="col-7">
                     <News/>
+                    <Roster/>
                     </div>
                     {/* <div className="col-3">Roster</div> */}
                     
