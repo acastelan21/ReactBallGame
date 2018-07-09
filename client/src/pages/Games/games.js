@@ -7,10 +7,16 @@ import GameButton from "../../components/GamesButton";
 
 
 class Games extends Component{
-    state ={
-        games:[],
-        isThereGames: false
-    };
+    constructor(props){
+        super(props);
+        this.state ={
+            games:[],
+            isThereGames: false
+        }
+        this.handleGameClick=this.handleGameClick.bind(this);
+        
+    }
+   
     
 
     handleSearchGames = (event)=>{
@@ -23,15 +29,20 @@ class Games extends Component{
             games:response.data.games
             });
             console.log(this.state.games);
+            console.log("this is in handle search games")
         });//.then(response)
     }//handle search games
-    handleGameClick = (event) =>{
-        event.preventDefault();
-        window.location.href="http://localhost:3000/bets/";
+    handleGameClick = (event)=>{
+        
+        window.location.href="http://localhost:3000/bets/" + this.state.games.id;
+        console.log(this.state.games);
+        
+        console.log("this in handlegameclick");
     }
 
 
     render(){
+        
         return(
             
             <div className="gamesComp">
@@ -48,7 +59,7 @@ class Games extends Component{
                     key={games.id}
                     awayTeam={games.away.name}
                     homeTeam={games.home.name}
-                    handleGameClick={this.handleGameClick}
+                    handleGameClick={this.handleGameClick.bind(this)}
                     />
                 ))}
                 </div>
