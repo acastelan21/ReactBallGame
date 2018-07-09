@@ -43,7 +43,7 @@ getGetRequest(){
           <Route path="/members" render={(props) => <Members auth={auth} {...props} />} />
           <Route exact path="/games" render={(props) => <Games auth={auth} {...props} />} />
           <Route path="/leaderboard" render={(props) => <Leaderboard auth={auth} {...props} />} />
-          {/* <Route exact path="/bets/" render={(props) => <Bets auth={auth}{...props}/>}/> */}
+          <Route path="/bets/:id" render={(props) => <Bets auth={auth}{...props}/>}/>
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 

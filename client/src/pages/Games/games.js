@@ -16,9 +16,7 @@ class Games extends Component{
         this.handleGameClick=this.handleGameClick.bind(this);
         
     }
-   
     
-
     handleSearchGames = (event)=>{
         event.preventDefault();
         API.searchForGames()
@@ -32,12 +30,13 @@ class Games extends Component{
             console.log("this is in handle search games")
         });//.then(response)
     }//handle search games
-    handleGameClick = (event)=>{
+    handleGameClick= (event)=>{
+            
+            const gameId= event.target.id;
+            console.log(this.state.games);
+            window.location.href="http://localhost:3000/bets/" + gameId;
+            console.log("this in handlegameclick");
         
-        window.location.href="http://localhost:3000/bets/" + this.state.games.id;
-        console.log(this.state.games);
-        
-        console.log("this in handlegameclick");
     }
 
 
@@ -59,9 +58,10 @@ class Games extends Component{
                     key={games.id}
                     awayTeam={games.away.name}
                     homeTeam={games.home.name}
-                    handleGameClick={this.handleGameClick.bind(this)}
+                    handleGameClick={this.handleGameClick}
                     />
                 ))}
+                
                 </div>
             
 
