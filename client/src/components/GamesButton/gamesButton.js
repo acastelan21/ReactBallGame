@@ -6,4 +6,4 @@ const GameButton = props =>
                 <button id={props._id} onClick={props.handleGameClick} className="eachGame" href="/bets"> {props.homeTeam} vs. {props.awayTeam} </button>
             </div>
 
-             export default GameButton ;
+export default GameButton ;

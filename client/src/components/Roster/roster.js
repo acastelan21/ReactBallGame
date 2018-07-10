@@ -7,7 +7,7 @@ class Roster extends Component{
         super();
         this.state={
             regularRoster:[],
-            // injuredRoster:[]
+            
         }
     }
 

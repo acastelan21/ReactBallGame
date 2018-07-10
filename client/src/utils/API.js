@@ -45,7 +45,19 @@ const API ={
 
 
         return axios.get(proxyUrl+rosterUrl);
-    }
+    },
+
+    searchForGameInfo: () => {
+        const pathName = window.location.pathname;
+        const splittingPathName= pathName.split("/");
+        const game_id = splittingPathName[2];
+        
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const apikey = "xksqy5yzud2g255rumfjf5ga";
+        const gameInfoUrl = `http://api.sportradar.us/mlb/trial/v6.5/en/games/${game_id}/boxscore.json?api_key=${apikey}`;
+        return axios.get(proxyUrl + gameInfoUrl);
+
+    },
 
 
 };
