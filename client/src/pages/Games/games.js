@@ -32,7 +32,7 @@ class Games extends Component{
     }//handle search games
     handleGameClick= (event)=>{
             
-            const gameId= event.target.id;
+            const gameId = event.target.id;
             console.log(this.state.games);
             // window.location.href="https://evening-depths-72793.herokuapp.com/bets/" + gameId;
             window.location.href="http://localhost:3000/bets/" + gameId;

@@ -1,17 +1,29 @@
 import React, {Component} from "react"; 
 import API from "../../utils/API"
 import QuickTeamStats from "../../components/QuickTeamStats";
+import Questions from "../../components/Questions";
 class Bets extends Component{
 
-constructor(){
-    super();
+constructor(props){
+    super(props);
     this.state={
         gameInfo:[],
         homeTeamInfo:[],
         awayTeamInfo:[],
         homeTeamProbablePitcher:[],
-        awayTeamProbablePitcher:[]
+        awayTeamProbablePitcher:[],
+        q1:"",
+        q2:"",
+        q3:"",
+        q4:"",
+        q5:"",
     }
+    this.handleChange =this.handleChange.bind(this);
+}
+handleChange(event){
+    
+    this.setState({[event.target.name]:event.target.value});
+    
 }
 componentWillMount(){
     API.searchForGameInfo()
@@ -29,15 +41,36 @@ componentWillMount(){
     })
 }
 
+
+handleBetsSumbit = (event)=>{
     
+    const answersKey = {
+        gameId: this.state.gameInfo.id,
+        q1:this.state.q1,
+        q2:this.state.q2,
+        q3:this.state.q3,
+        q4:this.state.q4,
+        q5:this.state.q5
+    }
+    console.log (answersKey);
+    event.preventDefault();
+   
+
+    }
+ 
+  
     
 
 
 
 render (){
-  console.log(this.state.homeTeamProbablePitcher);
+    
+    
+    
 return(
-    <div className="bets">
+    <div className="betsPage">
+    Bets Page
+    
     <QuickTeamStats 
     //Home Team
     homeTeamName={this.state.homeTeamInfo.name}
@@ -58,11 +91,24 @@ return(
     awayTeamProbablePitcherLosses={this.state.awayTeamProbablePitcher.loss}
     awayTeamProbablePitcherEra={this.state.awayTeamProbablePitcher.era}
     />
+    <Questions
+    homeTeamAbbr={this.state.homeTeamInfo.abbr}
+    awayTeamAbbr={this.state.awayTeamInfo.abbr}
+    homeTeamProbablePitcherLastName={this.state.homeTeamProbablePitcher.last_name}
+    handleBetsSumbit={this.handleBetsSumbit}
+    handleChange = {this.handleChange}
+    value ={this.state.value}
+    
+    
+    />
+
     </div>
 
 )
 }
 }
+
+
 
 export default Bets;
 
