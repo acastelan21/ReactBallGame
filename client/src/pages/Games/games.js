@@ -42,12 +42,14 @@ class Games extends Component{
 
 
     render(){
-        
+        const loggedIn = this.props.auth.isAuthenticated(); 
         return(
             
             <div className="gamesComp">
                 <NavBar/>
                 <div>Games Today</div>
+                {(loggedIn)? (
+                <div> 
                 <button onClick={this.handleSearchGames} type="submit" className="btn btn-primary">
                 Get Games
                 </button>
@@ -64,10 +66,13 @@ class Games extends Component{
                 ))}
                 
                 </div>
+                </div>
+            ): (<div> You do not have access </div>)}
+                
             
 
 
-            </div>
+            </div>//games comp
         )
     }
 }

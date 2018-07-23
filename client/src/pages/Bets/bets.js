@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import API from "../../utils/API"
 import QuickTeamStats from "../../components/QuickTeamStats";
 import Questions from "../../components/Questions";
+import NavBar from "../../components/NavBar";
 class Bets extends Component{
 
 constructor(props){
@@ -64,43 +65,51 @@ handleBetsSumbit = (event)=>{
 
 
 render (){
-    
+    const loggedIn = this.props.auth.isAuthenticated();
     
     
 return(
     <div className="betsPage">
-    Bets Page
+
+   
+    <NavBar/>
+    <div> Bets Page</div>
+    {(loggedIn)?(
+        <div>
+        
+        <QuickTeamStats 
+        //Home Team
+        homeTeamName={this.state.homeTeamInfo.name}
+        homeTeamWin ={this.state.homeTeamInfo.win} 
+        homeTeamLosses={this.state.homeTeamInfo.loss}
+        homeTeamProbablePitcherFirstName={this.state.homeTeamProbablePitcher.first_name }
+        homeTeamProbablePitcherLastName={this.state.homeTeamProbablePitcher.last_name}
+        homeTeamProbablePitcherWins={this.state.homeTeamProbablePitcher.win}
+        homeTeamProbablePitcherLosses={this.state.homeTeamProbablePitcher.loss}
+        homeTeamProbablePitcherEra={this.state.homeTeamProbablePitcher.era}
+        //away team
+        awayTeamName={this.state.awayTeamInfo.name}
+        awayTeamWin ={this.state.awayTeamInfo.win} 
+        awayTeamLosses={this.state.awayTeamInfo.loss}
+        awayTeamProbablePitcherFirstName={this.state.awayTeamProbablePitcher.first_name }
+        awayTeamProbablePitcherLastName={this.state.awayTeamProbablePitcher.last_name}
+        awayTeamProbablePitcherWins={this.state.awayTeamProbablePitcher.win}
+        awayTeamProbablePitcherLosses={this.state.awayTeamProbablePitcher.loss}
+        awayTeamProbablePitcherEra={this.state.awayTeamProbablePitcher.era}
+        />
+        <Questions
+        homeTeamAbbr={this.state.homeTeamInfo.abbr}
+        awayTeamAbbr={this.state.awayTeamInfo.abbr}
+        homeTeamProbablePitcherLastName={this.state.homeTeamProbablePitcher.last_name}
+        handleBetsSumbit={this.handleBetsSumbit}
+        handleChange = {this.handleChange}
+        value ={this.state.value}
+        
+        
+        />
+        </div>
+    ): (<div> You do not have access </div>)}
     
-    <QuickTeamStats 
-    //Home Team
-    homeTeamName={this.state.homeTeamInfo.name}
-    homeTeamWin ={this.state.homeTeamInfo.win} 
-    homeTeamLosses={this.state.homeTeamInfo.loss}
-    homeTeamProbablePitcherFirstName={this.state.homeTeamProbablePitcher.first_name }
-    homeTeamProbablePitcherLastName={this.state.homeTeamProbablePitcher.last_name}
-    homeTeamProbablePitcherWins={this.state.homeTeamProbablePitcher.win}
-    homeTeamProbablePitcherLosses={this.state.homeTeamProbablePitcher.loss}
-    homeTeamProbablePitcherEra={this.state.homeTeamProbablePitcher.era}
-    //away team
-    awayTeamName={this.state.awayTeamInfo.name}
-    awayTeamWin ={this.state.awayTeamInfo.win} 
-    awayTeamLosses={this.state.awayTeamInfo.loss}
-    awayTeamProbablePitcherFirstName={this.state.awayTeamProbablePitcher.first_name }
-    awayTeamProbablePitcherLastName={this.state.awayTeamProbablePitcher.last_name}
-    awayTeamProbablePitcherWins={this.state.awayTeamProbablePitcher.win}
-    awayTeamProbablePitcherLosses={this.state.awayTeamProbablePitcher.loss}
-    awayTeamProbablePitcherEra={this.state.awayTeamProbablePitcher.era}
-    />
-    <Questions
-    homeTeamAbbr={this.state.homeTeamInfo.abbr}
-    awayTeamAbbr={this.state.awayTeamInfo.abbr}
-    homeTeamProbablePitcherLastName={this.state.homeTeamProbablePitcher.last_name}
-    handleBetsSumbit={this.handleBetsSumbit}
-    handleChange = {this.handleChange}
-    value ={this.state.value}
-    
-    
-    />
 
     </div>
 
