@@ -12,13 +12,10 @@ import axios from "axios";
 import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 import Bets from "./pages/Bets";
+
 const auth =new Auth();
 
-const handleAuthentication = (nextState, replace) => {
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.handleAuthentication();
-  }
-}
+
 class App extends Component {
 
 getGetRequest(){
@@ -35,9 +32,6 @@ getGetRequest(){
       <Wrapper>
         <Router history={history}>
           <div>
-            
-            
-
           {/* Routing for pages */}
           <Route exact path="/" render={(props) => <LogIn auth={auth} {...props} />} />
           <Route path="/members" render={(props) => <Members auth={auth} {...props} />} />
@@ -45,7 +39,7 @@ getGetRequest(){
           <Route path="/leaderboard" render={(props) => <Leaderboard auth={auth} {...props} />} />
           <Route path="/bets/:id" render={(props) => <Bets auth={auth}{...props}/>}/>
           <Route path="/callback" render={(props) => {
-            handleAuthentication(props);
+            auth.handleAuthentication(props);
             return <Callback {...props} /> 
           }}/>
             
