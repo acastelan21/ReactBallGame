@@ -31,6 +31,7 @@ getGetRequest(){
     return (
       <Wrapper>
         <Router history={history}>
+        
           <div>
           {/* Routing for pages */}
           <Route exact path="/" render={(props) => <LogIn auth={auth} {...props} />} />
@@ -44,6 +45,7 @@ getGetRequest(){
           }}/>
             
           </div>
+    
         </Router>
         <Footer/>
       </Wrapper>
