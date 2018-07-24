@@ -3,6 +3,9 @@ import API from "../../utils/API"
 import QuickTeamStats from "../../components/QuickTeamStats";
 import Questions from "../../components/Questions";
 import NavBar from "../../components/NavBar";
+import Auth from "../../auth/Auth";
+
+const auth = new Auth(); 
 class Bets extends Component{
 
 constructor(props){
@@ -26,6 +29,7 @@ handleChange(event){
     this.setState({[event.target.name]:event.target.value});
     
 }
+
 componentWillMount(){
     API.searchForGameInfo()
     .then((response)=>{
@@ -40,20 +44,42 @@ componentWillMount(){
         })
         console.log(this.state.gameInfo)
     })
+    this.setState({ profile: {} });
+        const { userProfile, getProfile } = auth;
+        if (!userProfile) {
+          getProfile((err, profile) => {
+            this.setState({ profile });
+          });
+        } else {
+          this.setState({ profile: userProfile });
+        }
+        
 }
 
 
 handleBetsSumbit = (event)=>{
-    
+    console.log("profile in handle bets", this.state.profile)
+    let split = this.state.profile.sub.split("|");
+    let userId = split[1]
     const answersKey = {
-        gameId: this.state.gameInfo.id,
-        q1:this.state.q1,
-        q2:this.state.q2,
-        q3:this.state.q3,
-        q4:this.state.q4,
-        q5:this.state.q5
+        _id: userId,
+        userName: this.state.profile.nickname,
+        favoriteTeam: "White Sox",
+        gamesBettedNum: 0, 
+        score: 0, 
+        gamesAnswers: {
+            GamesBetted: {
+            gameId: this.state.gameInfo.id,
+            a1:this.state.q1,
+            a2:this.state.q2,
+            a3:this.state.q3,
+            a4:this.state.q4,
+            a5:this.state.q5
+        }}
+        
     }
     console.log (answersKey);
+    API.newMember(answersKey).then(console.log("sent to database"));
     event.preventDefault();
    
 
@@ -66,7 +92,16 @@ handleBetsSumbit = (event)=>{
 
 render (){
     const loggedIn = this.props.auth.isAuthenticated();
-    
+    const {profile} = this.state
+    console.log("profile", profile)
+    //   console.log("profile" , profile)
+    //   console.log("sub", profile.sub)
+    //   if (profile.sub){
+    //     let split = profile.sub.split("|")
+    //     let userId = split[1]
+    //    console.log("id", userId)
+    //   }
+    //   else{console.log("false")}
     
 return(
     <div className="betsPage">

@@ -8,7 +8,7 @@ export default class Auth {
     redirectUri: 'http://localhost:3000/callback',
     audience: 'https://acastapi.auth0.com/userinfo',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
   constructor() {
@@ -16,8 +16,30 @@ export default class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.getProfile = this.getProfile.bind(this); 
   }
-  
+  userProfile; 
+
+  getAccessToken(){
+    const accessToken = localStorage.getItem("access_token");
+    if(!accessToken){
+      throw new Error("No Access Token Found")
+    }
+    return accessToken; 
+
+
+  }
+
+  getProfile(cb){
+    let accessToken = this.getAccessToken();
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if(profile){
+        this.userProfile = profile; 
+      }
+      cb(err,profile)
+    });
+
+  }
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {

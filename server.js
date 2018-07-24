@@ -14,7 +14,7 @@ app.use(express.static("client/build"));
 
 // Get saved articles
 app.get("/api/database", dbController.find);
-
+app.post("/api/saved", dbController.insert);
 
 app.use(function(req,res){
     res.sendFile(path.join(__dirname, "client/build/index.html"));
@@ -28,7 +28,7 @@ mongoose.connect(db, function(error) {
   }
   // Or log a success message
   else {
-    console.log("mongoose connection is successful");
+    console.log("Mongo connection is successful");
   }
 });
 

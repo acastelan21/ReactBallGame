@@ -58,6 +58,11 @@ const API ={
         return axios.get(proxyUrl + gameInfoUrl);
 
     },
+    newMember : ( saveObj )=>{
+        return axios.post("/api/saved", saveObj)
+
+    }
+    
 
 
 };
