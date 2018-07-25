@@ -31,6 +31,7 @@ handleChange(event){
 }
 
 componentWillMount(){
+    
     API.searchForGameInfo()
     .then((response)=>{
         this.setState({
@@ -58,6 +59,7 @@ componentWillMount(){
 
 
 handleBetsSumbit = (event)=>{
+    event.preventDefault();
     console.log("profile in handle bets", this.state.profile)
     let split = this.state.profile.sub.split("|");
     let userId = split[1]
@@ -78,10 +80,24 @@ handleBetsSumbit = (event)=>{
         }}
         
     }
-    console.log (answersKey);
-    API.newMember(answersKey).then(console.log("sent to database"));
-    event.preventDefault();
+    console.log("user id", userId);
+    console.log ("answers key", answersKey);
+    API.searchDB(answersKey).then((response)=>{
+        console.log("I found this in DB:",response)
+    
+
+    if (response.data === false){
+        API.newMember(answersKey).then(console.log("new member added"));
+    }
+    else{
+        API.upDateMember(answersKey).then(console.log("member updated"))
+    
+    }
+
+
    
+    
+})
 
     }
  

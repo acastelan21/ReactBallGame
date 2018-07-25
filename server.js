@@ -13,8 +13,10 @@ app.use(express.static("client/build"));
 
 
 // Get saved articles
-app.get("/api/database", dbController.find);
+app.post("/api/database", dbController.find);
 app.post("/api/saved", dbController.insert);
+app.post("/api/update", dbController.update); 
+
 
 app.use(function(req,res){
     res.sendFile(path.join(__dirname, "client/build/index.html"));

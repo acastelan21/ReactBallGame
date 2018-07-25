@@ -1,7 +1,8 @@
 import React, {Component} from "react"; 
-import NavBar from "../../components/NavBar";
+import NavBarLoggedOut from "../../components/NavBarLoggedOut";
 import "./login.css";
 import Auth from "../../auth/Auth";
+
 
 const auth =new Auth();
 
@@ -12,7 +13,7 @@ class LogIn extends Component{
         const { isAuthenticated } = auth; 
         return(
             <div className="logInComp">
-                <NavBar/>
+                <NavBarLoggedOut/>
                 <div className="container" id="overallContain">
                     <div className="row">
                         <div className="col-12">
