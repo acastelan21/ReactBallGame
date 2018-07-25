@@ -1,6 +1,8 @@
 import React, {Component} from "react"; 
 import NavBar from "../../components/NavBar";
 class Leaderboard extends Component{
+  
+
     render(){
       const loggedIn = this.props.auth.isAuthenticated(); 
         return(

@@ -8,7 +8,7 @@ import Games from "./pages/Games";
 import Leaderboard from "./pages/Leaderboard";
 import Auth from "./auth/Auth.js";
 import Callback from "./pages/CallBack";
-
+import Scoring from "./components/Scoring";
 import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 import Bets from "./pages/Bets";
@@ -31,6 +31,7 @@ class App extends Component {
           <Route exact path="/games" render={(props) => <Games auth={auth} {...props} />} />
           <Route path="/leaderboard" render={(props) => <Leaderboard auth={auth} {...props} />} />
           <Route path="/bets/:id" render={(props) => <Bets auth={auth}{...props}/>}/>
+          <Route path="/scoring" render={(props) => <Scoring auth={auth}{...props}/>}/>
           <Route path="/callback" render={(props) => {
             auth.handleAuthentication(props);
             return <Callback {...props} /> 

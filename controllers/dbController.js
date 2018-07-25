@@ -50,5 +50,18 @@ module.exports = {
       dbData.update({_id:req.body._id}, {"gamesBettedNum": gamesBettedOn}).then(function(doc1){
       res.json(doc1)
     })
+    
+  },
+  sendScoreDb: function (req,res){
+    console.log("sending score" , req.body.score)
+    
+    dbData.update({_id:req.body.userId}, {$inc: {"score":req.body.score}}).then(function(doc){
+      res.json(doc)
+    })
+  },
+  findAnswers: function (req,res){
+    dbData.find({}).then(function(doc){
+      res.json(doc)
+    })
   }
 }
