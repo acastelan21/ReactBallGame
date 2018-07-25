@@ -10,14 +10,14 @@ class Members extends Component{
         const loggedIn= this.props.auth.isAuthenticated();
         return(
             <div className="membersComp">
+            <div>Members Page</div>
+            {(loggedIn) ? ( 
+                <div>
                 <NavBar/>
                 
-                <div className="row">
-                    <div className="col-12">
-                        <div>Members Page</div>
-                    </div>
-                </div>
-                {(loggedIn) ? ( 
+                
+                
+                
                 
                 <div className="row">
                     <div className="col-5">
@@ -29,6 +29,7 @@ class Members extends Component{
                     </div>
                     {/* <div className="col-3">Roster</div> */}
                     
+                </div>
                 </div>
                 ): (<div>You do not have access</div>)}
                
