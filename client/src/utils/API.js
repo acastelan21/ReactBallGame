@@ -58,6 +58,24 @@ const API ={
         return axios.get(proxyUrl + gameInfoUrl);
 
     },
+    searchGameBoxScore: (obj)=> {
+        console.log("box score game id", obj)
+        const game_id = obj; 
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const apikey = "xksqy5yzud2g255rumfjf5ga";
+        const gameInfoUrl = `http://api.sportradar.us/mlb/trial/v6.5/en/games/${game_id}/boxscore.json?api_key=${apikey}`;
+        return axios.get(proxyUrl + gameInfoUrl);
+
+    },
+    searchPitchMetrics: (obj)=>{
+        console.log("pitch metrics game Id ", obj)
+        const game_id = obj;
+        const apikey = "t4mtkrmkmv68u9dx6gtbzpqa";
+        const proxyUrl2 = 'https://cors-anywhere.herokuapp.com/';
+        const query2 = `http://api.sportradar.us/mlb/trial/v6.5/en/games/${game_id}/pitch_metrics.json?api_key=${apikey}`;
+        return axios.get(proxyUrl2 + query2); 
+
+    },
     newMember : ( saveObj )=>{
         return axios.post("/api/saved", saveObj)
 
@@ -75,8 +93,15 @@ const API ={
     } ,
     upDateMemberGameCount : (sendingObj)=>{
         return axios.post("/api/updateCount", sendingObj)
-    }
+    },
 
+    searchForAnswers: () => {
+        return axios.get("/api/answersKey")
+    },
+    sendScoreDb: (obj)=>{
+        console.log("obj send score" , obj)
+        return axios.post("/api/sendScore", obj)
+    }
 
 };
 

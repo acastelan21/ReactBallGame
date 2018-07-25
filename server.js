@@ -17,6 +17,8 @@ app.post("/api/database", dbController.find);
 app.post("/api/saved", dbController.insert);
 app.post("/api/update", dbController.update); 
 app.post("/api/updateCount", dbController.updateGamesBetted);
+app.get("/api/answersKey", dbController.findAnswers);
+app.post("/api/sendScore",dbController.sendScoreDb );
 
 app.use(function(req,res){
     res.sendFile(path.join(__dirname, "client/build/index.html"));
