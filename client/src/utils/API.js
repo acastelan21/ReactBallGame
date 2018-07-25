@@ -61,7 +61,18 @@ const API ={
     newMember : ( saveObj )=>{
         return axios.post("/api/saved", saveObj)
 
-    }
+    },
+    
+    upDateMember : (sendObj) =>{
+        console.log("sendObj", sendObj)
+        return axios.post("/api/update", sendObj,
+    )
+    },
+    searchDB : (sendId) => {
+        console.log("inside of searchDB")
+        console.log("send Id", sendId);
+        return axios.post("/api/database", sendId)
+    } 
     
 
 

@@ -8,14 +8,14 @@ const dbDataSchema = new Schema({
     gamesBettedNum: Number, 
     score: Number, 
     gamesAnswers: {
-        GamesBetted:{
+        GamesBetted:[{
             gameId: String,
             a1: String,
             a2: String,
             a3: String,
             a4: String,
             a5: String
-        }
+        }]
 
         
     }

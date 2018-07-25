@@ -17,15 +17,7 @@ const auth =new Auth();
 
 
 class App extends Component {
-
-getGetRequest(){
-  console.log("i am here");
-  axios.get("/api/database").then(res => {
-    console.log(res); 
-  })
-}
-
-
+  
   render() {
     
     return (
