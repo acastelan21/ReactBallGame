@@ -72,8 +72,10 @@ const API ={
         console.log("inside of searchDB")
         console.log("send Id", sendId);
         return axios.post("/api/database", sendId)
-    } 
-    
+    } ,
+    upDateMemberGameCount : (sendingObj)=>{
+        return axios.post("/api/updateCount", sendingObj)
+    }
 
 
 };
