@@ -11,7 +11,7 @@ module.exports = {
        if(doc.length === 0){
           res.send(false)
        } else {
-        res.send(true)}
+        res.send(doc)}
       }).catch(function(err) {
         res.json(err);
       });
@@ -35,6 +35,7 @@ module.exports = {
       console.log("req.body.gameAnswers.GamesBetted", req.body.gamesAnswers.GamesBetted)
       dbData.update({_id: req.body._id}, {$push:{"gamesAnswers.GamesBetted":req.body.gamesAnswers.GamesBetted}}).then(function(doc){
         res.json(doc);
+      
         console.log("doc update:", doc);
         console.log("update is complete");
 
@@ -42,5 +43,12 @@ module.exports = {
         res.json(err)
         console.log("updateError:", err)
       })
-    }
+    },
+    updateGamesBetted: function(req,res){
+      console.log("games betted", req.body.gamesAnswers.GamesBetted.length)
+      let gamesBettedOn = req.body.gamesAnswers.GamesBetted.length;
+      dbData.update({_id:req.body._id}, {"gamesBettedNum": gamesBettedOn}).then(function(doc1){
+      res.json(doc1)
+    })
+  }
 }

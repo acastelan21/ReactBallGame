@@ -67,7 +67,7 @@ handleBetsSumbit = (event)=>{
         _id: userId,
         userName: this.state.profile.nickname,
         favoriteTeam: "White Sox",
-        gamesBettedNum: 0, 
+        gamesBettedNum: 1, 
         score: 0, 
         gamesAnswers: {
             GamesBetted: {
@@ -84,14 +84,15 @@ handleBetsSumbit = (event)=>{
     console.log ("answers key", answersKey);
     API.searchDB(answersKey).then((response)=>{
         console.log("I found this in DB:",response)
-    
+        
 
     if (response.data === false){
         API.newMember(answersKey).then(console.log("new member added"));
     }
     else{
-        API.upDateMember(answersKey).then(console.log("member updated"))
-    
+        API.upDateMember(answersKey).then(console.log("member updated"));
+        API.upDateMemberGameCount(response.data[0]).then(console.log("member count update"));
+        
     }
 
 

@@ -16,7 +16,7 @@ app.use(express.static("client/build"));
 app.post("/api/database", dbController.find);
 app.post("/api/saved", dbController.insert);
 app.post("/api/update", dbController.update); 
-
+app.post("/api/updateCount", dbController.updateGamesBetted);
 
 app.use(function(req,res){
     res.sendFile(path.join(__dirname, "client/build/index.html"));

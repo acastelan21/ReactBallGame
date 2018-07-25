@@ -8,7 +8,7 @@ import Games from "./pages/Games";
 import Leaderboard from "./pages/Leaderboard";
 import Auth from "./auth/Auth.js";
 import Callback from "./pages/CallBack";
-import axios from "axios";
+
 import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer";
 import Bets from "./pages/Bets";
