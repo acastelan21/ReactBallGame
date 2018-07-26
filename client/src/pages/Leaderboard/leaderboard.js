@@ -1,10 +1,30 @@
 import React, {Component} from "react"; 
 import NavBar from "../../components/NavBar";
+import API from "../../utils/API";
+import LeadBoardRows from "../../components/LeaderBoardRows";
 class Leaderboard extends Component{
+  constructor(props) {
+    super(props)
   
+    this.state = {
+       leaderBoardUsers:[]
+
+    }
+  }
+  componentWillMount(){ 
+    API.searchForAnswers().then((response)=>{
+      console.log("response", response)
+      
+      this.setState({leaderBoardUsers:response.data})
+
+    })
+  }
 
     render(){
       const loggedIn = this.props.auth.isAuthenticated(); 
+      console.log("state in render", this.state)
+     
+
         return(
 
 
@@ -26,12 +46,21 @@ class Leaderboard extends Component{
          
      
           <tbody>
-           
-           <tr>
-             <th scope="row"></th>
-             <td>username</td>
-             <td>score</td>
-           </tr>
+           {this.state.leaderBoardUsers.map( (user,i) => (
+             <LeadBoardRows
+
+             key={user.userName}
+             rank = {i+1}
+             userName= {user.userName}
+             score={user.scoreBoardScore}
+             gamesBettedNum={user.gamesBettedNum}
+             />
+             
+
+
+           ))
+          
+          }
            
      
          

@@ -113,7 +113,9 @@ class scoring extends Component {
         console.log("username: ",recInfo[k]._id); 
         console.log("score: ", score)
         const userId = recInfo[k]._id;
-        const sendInfo = {score, userId}
+        const scoreFromDb = recInfo[k].score;
+        const numBets = recInfo[k].gamesBettedNum;
+        const sendInfo = {score, userId, scoreFromDb, numBets}
          //============================Scoring end============================================
           //============================Post score in db============================================
         API.sendScoreDb(sendInfo).then((response)=>{

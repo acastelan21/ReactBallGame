@@ -54,13 +54,26 @@ module.exports = {
   },
   sendScoreDb: function (req,res){
     console.log("sending score" , req.body.score)
-    
-    dbData.update({_id:req.body.userId}, {$inc: {"score":req.body.score}}).then(function(doc){
+  
+    const newScore= req.body.score + req.body.scoreFromDb;
+    dbData.update({_id:req.body.userId}, {"score": newScore}).then(function(doc){
       res.json(doc)
+      if (doc){
+        console.log("score from db", req.body.scoreFromDb)
+        console.log("number of bets", req.body.numBets)
+        
+        const finalScore = (((newScore)/(req.body.numBets*5)*20))
+        console.log("finalScore", finalScore); 
+        dbData.update({_id:req.body.userId},{scoreBoardScore: finalScore}).then(function(doc2){
+          console.log("update scoreboard score done")
+        }) 
+      }
     })
   },
+  
+  
   findAnswers: function (req,res){
-    dbData.find({}).then(function(doc){
+    dbData.find().sort({scoreBoardScore: -1}).then(function(doc){
       res.json(doc)
     })
   }
