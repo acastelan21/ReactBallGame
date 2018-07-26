@@ -69,6 +69,7 @@ handleBetsSumbit = (event)=>{
         favoriteTeam: "White Sox",
         gamesBettedNum: 1, 
         score: 0, 
+        scoreBoardScore:0,
         gamesAnswers: {
             GamesBetted: {
             gameId: this.state.gameInfo.id,

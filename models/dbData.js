@@ -7,6 +7,7 @@ const dbDataSchema = new Schema({
     favoriteTeam: String,
     gamesBettedNum: Number, 
     score: Number, 
+    scoreBoardScore: Number,
     gamesAnswers: {
         GamesBetted:[{
             gameId: String,
