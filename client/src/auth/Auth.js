@@ -6,7 +6,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'acastapi.auth0.com',
     clientID: 'IrcntsqeNAG8Q4RZu96myNycxW1PMGu4',
-    redirectUri: "https://evening-depths-72793.herokuapp.com/callback",
+    redirectUri: 'http://localhost:3000/callback',
     audience: 'https://acastapi.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid profile'

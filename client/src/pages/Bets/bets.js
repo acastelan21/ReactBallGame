@@ -4,6 +4,7 @@ import QuickTeamStats from "../../components/QuickTeamStats";
 import Questions from "../../components/Questions";
 import NavBar from "../../components/NavBar";
 import Auth from "../../auth/Auth";
+
 import "./bets.css";
 
 const auth = new Auth(); 
@@ -12,6 +13,7 @@ class Bets extends Component{
 constructor(props){
     super(props);
     this.state={
+        
         gameInfo:[],
         homeTeamInfo:[],
         awayTeamInfo:[],
@@ -30,7 +32,13 @@ handleChange(event){
     this.setState({[event.target.name]:event.target.value});
     
 }
-
+toggleModal = () => {
+    
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+    console.log("toggle modal triggers", this.state.isOpen)
+}
 componentWillMount(){
     
     API.searchForGameInfo()
@@ -61,6 +69,7 @@ componentWillMount(){
 
 handleBetsSumbit = (event)=>{
     event.preventDefault();
+    this.toggleModal(); 
     console.log("profile in handle bets", this.state.profile)
     let split = this.state.profile.sub.split("|");
     let userId = split[1]
@@ -101,6 +110,7 @@ handleBetsSumbit = (event)=>{
    
     
 })
+   
 
     }
  
@@ -166,6 +176,7 @@ return(
         
         
         />
+        
         </div>
     ): (<div> You do not have access </div>)}
     
