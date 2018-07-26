@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import NavBar from "../../components/NavBar";
 import API from "../../utils/API";
 import GameButton from "../../components/GamesButton";
-
+import "./games.css";
 
 
 
@@ -16,9 +16,11 @@ class Games extends Component{
         this.handleGameClick=this.handleGameClick.bind(this);
         
     }
-    
-    handleSearchGames = (event)=>{
-        event.preventDefault();
+    componentWillMount(){
+        this.handleSearchGames()
+    }
+    handleSearchGames = ()=>{
+        
         API.searchForGames()
         .then((response)=>{
             this.setState({isThereGames:true});
@@ -35,7 +37,7 @@ class Games extends Component{
             const gameId = event.target.id;
             console.log(this.state.games);
             window.location.href="https://evening-depths-72793.herokuapp.com/bets/" + gameId;
-            //window.location.href="http://localhost:3000/bets/" + gameId;
+           // window.location.href="http://localhost:3000/bets/" + gameId;
             console.log("this in handlegameclick");
         
     }
@@ -47,12 +49,14 @@ class Games extends Component{
             
             <div className="gamesComp">
                 <NavBar/>
-                <div>Games Today</div>
+                <div className="row">
+                <div className="col-12">
+                <h2><u>Games Today</u></h2>
+                </div>
+                </div>
                 {(loggedIn)? (
                 <div> 
-                <button onClick={this.handleSearchGames} type="submit" className="btn btn-primary">
-                Get Games
-                </button>
+                
                 <div className="row">
                 {this.state.games.map(games =>(
 

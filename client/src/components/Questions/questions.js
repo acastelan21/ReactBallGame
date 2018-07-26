@@ -6,6 +6,7 @@ const Questions = props =>
         <div className="row">
             <div className="col-12">
                 <div className="questions">
+                <h3>Questions (Chose Wisely)</h3>
                 <form>
                     <div className = "q1">
                         <p>1. Who will win the game?</p>

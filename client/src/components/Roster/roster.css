@@ -1,0 +1,10 @@
+.rosterPlayer  {
+    border: 2px solid navy;
+    border-radius: 5px;
+    margin-top: 5px; 
+}
+.injuredPlayer {
+    border: 2px solid navy;
+    border-radius: 5px;
+}
+

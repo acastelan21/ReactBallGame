@@ -4,6 +4,7 @@ import QuickTeamStats from "../../components/QuickTeamStats";
 import Questions from "../../components/Questions";
 import NavBar from "../../components/NavBar";
 import Auth from "../../auth/Auth";
+import "./bets.css";
 
 const auth = new Auth(); 
 class Bets extends Component{
@@ -125,8 +126,13 @@ return(
     <div className="betsPage">
 
    
-    <NavBar/>
-    <div> Bets Page</div>
+   <NavBar/>
+   <div className="row">
+   <div className="col-12">
+   <h2> <u>Currently Betting on {this.state.homeTeamInfo.name} vs {this.state.awayTeamInfo.name}</u></h2>
+   </div>
+   </div>
+    
     {(loggedIn)?(
         <div>
         

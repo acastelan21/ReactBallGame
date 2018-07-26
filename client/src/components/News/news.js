@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import API from "../../utils/API";
-
+import "./news.css";
 class News extends Component{
 
 constructor(){
@@ -9,8 +9,11 @@ constructor(){
         allArticles:[]
     }
 }
-handleSearchNews =(event)=>{
-    event.preventDefault();
+componentWillMount(){
+    this.handleSearchNews();
+}
+handleSearchNews =()=>{
+    
     API.searchForNews()
     .then((response)=>{
         console.log("=====================================");
@@ -23,12 +26,14 @@ handleSearchNews =(event)=>{
 }
 
 render(){
-    const articles = this.state.allArticles.slice(0,5);
+    const articles = this.state.allArticles.slice(0,10);
     return(
-        <div className="sectionName"> News
-            <button onClick={this.handleSearchNews} type="submit" className="btn btn-primary">
-                Get News
-            </button>
+        <div className="sectionName">
+         <div className="row">
+                <div className="col-12">
+                <h2><u>News</u></h2>
+                </div>
+                </div>
             <div className="row">
                 <div className="col-12">
                 
@@ -36,26 +41,30 @@ render(){
                 (
                 <div key={i}>
                     <div className="newsArticle">
-                    {i + 1+"."}
-                    {articles.title}
-                    <br/>
+                   <div> <strong>{i + 1+"."} {articles.title}</strong>
+                    </div>
+                    <div>
                     {articles.description}
-                    <br/>
-                    {articles.url}
+                    </div>
+                    <div><a href={articles.url}> To read more click here </a>
+                    
+
                     </div>
 
                 </div>
 
 
-
+                    </div>
                 ))}
                     
 
-                </div>
-            </div>
+                
+                  
         </div> 
 
-
+        </div>
+        </div>
+        
 
 
 

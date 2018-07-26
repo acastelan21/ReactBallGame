@@ -14,14 +14,12 @@ import stadiumPic from "../../assets/images/stadium.png";
             <ul className="nav navbar-dark bg-dark justify-content-end">
             
                 <li className="nav-item">
-                    <a className="nav-link" href="/games">Games Today</a>
+                    <a className="nav-link" href="/games">Games</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/leaderboard">Leaderboard</a>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="/signup">Signup</a>
-                </li>
+                
             </ul>
     
     

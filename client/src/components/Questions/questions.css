@@ -1,0 +1,12 @@
+.sectionForQuestions {
+    margin:auto;
+    width:50% ;
+    text-align: center;
+    border: 2px solid navy;
+    border-radius: 5px;
+    margin-top: 5px;
+    
+}
+form button {
+    margin-bottom: 5px;
+}

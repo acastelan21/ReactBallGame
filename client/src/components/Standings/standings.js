@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import API from "../../utils/API";
-
+import "./standings.css";
 class Standings extends Component{
 
     constructor(){
@@ -15,8 +15,11 @@ class Standings extends Component{
 
     }
 }
-handleSearchStandings =(event)=>{
-    event.preventDefault();
+componentWillMount(){
+this.handleSearchStandings();
+}
+handleSearchStandings =()=>{
+    
     API.searchForStandings()
     .then((response)=>{
         console.log("=====================================");
@@ -39,14 +42,18 @@ render(){
     return(
         
             
-                <div className="sectionName"> Standings
-                <button onClick={this.handleSearchStandings} type="submit" className="btn btn-primary">
-                Get Standings
-                </button>
+                <div className="sectionName"> 
                 <div className="row">
-                <div className="col-6">
-                <div className="leagueName">National League
-                <div className="divisionName">West
+                <div className="col-12">
+                <h2><u>Standings</u></h2>
+                </div>
+                </div>
+                <div className="row">
+                <div className="col-12">
+                <div className="leagueName">
+                <h3>National League</h3>
+                <div className="divisionName">
+                <h4>West</h4>
                 
                 {this.state.standingsNLWest.map((standingsNLWest,i) =>(
                 <div key={i}>
@@ -59,7 +66,8 @@ render(){
               
                 ))}
                 </div> 
-                <div className="divisionName">Central
+                <div className="divisionName">
+                <h4>Central</h4>
                 {this.state.standingsNLCentral.map((standingsNLCentral,i) =>(
                 <div key={i}>
                 
@@ -72,7 +80,8 @@ render(){
                 ))}
                 </div>
                
-                <div className="divisionName">East
+                <div className="divisionName">
+                <h4>East</h4>
                 {this.state.standingsNLEast.map((standingsNLEast,i) =>(
                 <div key={i}>
                 
@@ -86,9 +95,13 @@ render(){
                 </div>
                 </div> 
                 </div>
-                <div className="col-6">
-                <div className="leagueName">American League 
-                <div className="divisionName">West
+                </div>
+                <div className="row">
+                <div className="col-12">
+                <div className="leagueName">
+                <h3>American League</h3> 
+                <div className="divisionName">
+                <h4>West</h4>
                 {this.state.standingsALWest.map((standingsALWest,i) =>(
                 <div key={i}>
                 
@@ -100,7 +113,8 @@ render(){
               
                 ))}
                 </div>
-                <div className="divisionName">Central
+                <div className="divisionName">
+                <h4>Central</h4>
                 {this.state.standingsALCentral.map((standingsALCentral,i) =>(
                 <div key={i}>
                 
@@ -112,7 +126,8 @@ render(){
               
                 ))}
                 </div>
-                <div className="divisionName">East
+                <div className="divisionName">
+                <h4>East</h4>
                 {this.state.standingsALEast.map((standingsALEast,i) =>(
                 <div key={i}>
                 

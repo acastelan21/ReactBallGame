@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import NavBar from "../../components/NavBar";
 import API from "../../utils/API";
 import LeadBoardRows from "../../components/LeaderBoardRows";
+import "./leaderboard.css";
 class Leaderboard extends Component{
   constructor(props) {
     super(props)
@@ -31,10 +32,15 @@ class Leaderboard extends Component{
 
     <div className="leaderboardComp">
     <NavBar/>
-
+      <div className="row">
+      <div className="col-12">
+      <h2><u>Overall Leaderboard</u></h2>
+      
+      </div>
+      </div>
     {(loggedIn)?(
        <div className="container" id="overallContain">
-
+      
        <table className="table table-hover table-dark">
          <thead>
            <tr>
@@ -67,6 +73,7 @@ class Leaderboard extends Component{
          </tbody>
          
        </table>
+       <p><strong>Disclaimer:</strong> Leaderboard is updated daily. It is based on all games betted on.</p>
      
      
      </div>

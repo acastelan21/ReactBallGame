@@ -7,7 +7,7 @@ const quickTeamStats = props =>
     <div className="row">
     <div className="col-12">
         <div className="homeTeamStats" >
-       {` Home Team: ${props.homeTeamName}
+       {`Home Team: ${props.homeTeamName}
         Wins: ${props.homeTeamWin} 
         Losses: ${props.homeTeamLosses}
         Probable Pitcher: ${props.homeTeamProbablePitcherFirstName } ${props.homeTeamProbablePitcherLastName}
