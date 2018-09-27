@@ -17,4 +17,4 @@ You can see the deployed website [Here](https://evening-depths-72793.herokuapp.c
 + Yarn
 
 ## Authors
-Alvaro Castelan | [LinkedIn](https://www.linkedin.com/in/alvarocastelan) | [Portfolio](alvarocastelan.com)
+Alvaro Castelan | [LinkedIn](https://www.linkedin.com/in/alvarocastelan) | [Portfolio](https://www.alvarocastelan.com)
