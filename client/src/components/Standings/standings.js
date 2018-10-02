@@ -16,7 +16,7 @@ class Standings extends Component{
     }
 }
 componentWillMount(){
-this.handleSearchStandings();
+setTimeout(this.handleSearchStandings(), 3000);
 }
 handleSearchStandings =()=>{
     
