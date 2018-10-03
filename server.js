@@ -6,19 +6,13 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3001;
 
-const dbController = require("./controllers/dbController");
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static("client/build")); 
 
 
-// Get saved articles
-app.post("/api/database", dbController.find);
-app.post("/api/saved", dbController.insert);
-app.post("/api/update", dbController.update); 
-app.post("/api/updateCount", dbController.updateGamesBetted);
-app.get("/api/answersKey", dbController.findAnswers);
-app.post("/api/sendScore",dbController.sendScoreDb );
+require("./routes/routes.js")(app)
 
 app.use(function(req,res){
     res.sendFile(path.join(__dirname, "client/build/index.html"));

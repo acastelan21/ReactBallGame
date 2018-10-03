@@ -121,8 +121,8 @@ handleBetsSumbit = (event)=>{
 
 render (){
     const loggedIn = this.props.auth.isAuthenticated();
-    const {profile} = this.state
-    console.log("profile", profile)
+    // const {profile} = this.state
+    // console.log("profile", profile)
     //   console.log("profile" , profile)
     //   console.log("sub", profile.sub)
     //   if (profile.sub){
