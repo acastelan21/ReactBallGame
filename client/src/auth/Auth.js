@@ -4,8 +4,8 @@ import history from "../history";
 export default class Auth {
   
   auth0 = new auth0.WebAuth({
-    domain: 'acastapi.auth0.com',
-    clientID: 'IrcntsqeNAG8Q4RZu96myNycxW1PMGu4',
+    domain: process.env.REACT_APP_AUTH_ADDRESS,
+    clientID: process.env.REACT_APP_ADDRESS_IFIER,
     redirectUri: 'http://localhost:3000/callback',
     audience: 'https://acastapi.auth0.com/userinfo',
     responseType: 'token id_token',

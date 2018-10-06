@@ -1,8 +1,9 @@
 import axios from "axios"; 
 import moment from "moment";
+
 const API ={
     searchForGames : () => {
-        const apikey = "xksqy5yzud2g255rumfjf5ga";
+        const apikey = process.env.REACT_APP_SPORTRADAR_KEY1;
         const today = new Date();
         const formateToday = moment(today).format('YYYY/MM/DD');
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
@@ -11,7 +12,7 @@ const API ={
     },
 
     searchForStandings : () => {
-        const baseballApi = "xksqy5yzud2g255rumfjf5ga"
+        const baseballApi = process.env.REACT_APP_SPORTRADAR_KEY1
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         const standingsUrl = `http://api.sportradar.us/mlb/trial/v6.5/en/seasons/2018/REG/standings.json?api_key=${baseballApi}`
 
@@ -30,7 +31,7 @@ const API ={
         `q=${favoriteTeam}&` +
         `from=${currentDate}&` +
         'sortBy=popularity&' +
-        'apiKey=7a083b0642434e4b855eb8aeec0efa45';
+        `apiKey=${process.env.REACT_APP_SPORTRADAR_KEY2} `;
         return axios.get(proxyUrl+url);
 
     },
@@ -38,7 +39,7 @@ const API ={
     searchForRoster:()=>{
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         const favoriteTeamId = "aa34e0ed-f342-4ec6-b774-c79b47b60e2d";//Twins Minnesota
-        const baseballApi = "xksqy5yzud2g255rumfjf5ga";
+        const baseballApi = process.env.REACT_APP_SPORTRADAR_KEY1;
 
 //------- roster api
         const rosterUrl = `http://api.sportradar.us/mlb/trial/v6.5/en/teams/${favoriteTeamId}/profile.json?api_key=${baseballApi}`;
@@ -53,7 +54,7 @@ const API ={
         const game_id = splittingPathName[2];
         
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        const apikey = "xksqy5yzud2g255rumfjf5ga";
+        const apikey = process.env.REACT_APP_SPORTRADAR_KEY3;
         const gameInfoUrl = `http://api.sportradar.us/mlb/trial/v6.5/en/games/${game_id}/boxscore.json?api_key=${apikey}`;
         return axios.get(proxyUrl + gameInfoUrl);
 
@@ -62,7 +63,7 @@ const API ={
         console.log("box score game id", obj)
         const game_id = obj; 
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        const apikey = "xksqy5yzud2g255rumfjf5ga";
+        const apikey = process.env.REACT_APP_SPORTRADAR_KEY1;
         const gameInfoUrl = `http://api.sportradar.us/mlb/trial/v6.5/en/games/${game_id}/boxscore.json?api_key=${apikey}`;
         return axios.get(proxyUrl + gameInfoUrl);
 
@@ -70,7 +71,7 @@ const API ={
     searchPitchMetrics: (obj)=>{
         console.log("pitch metrics game Id ", obj)
         const game_id = obj;
-        const apikey = "t4mtkrmkmv68u9dx6gtbzpqa";
+        const apikey = process.env.REACT_APP_SPORTRADAR_KEY3;
         const proxyUrl2 = 'https://cors-anywhere.herokuapp.com/';
         const query2 = `http://api.sportradar.us/mlb/trial/v6.5/en/games/${game_id}/pitch_metrics.json?api_key=${apikey}`;
         return axios.get(proxyUrl2 + query2); 
